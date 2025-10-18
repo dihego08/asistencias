@@ -31,12 +31,20 @@ $router->put('/feriados/{id}', 'FeriadoController@actualizar');
 $router->delete('/feriados/{id}', 'FeriadoController@eliminar');
 $router->put('/feriados/{id}/estado', 'FeriadoController@editarEstado');
 
-$router->get('/permisos', 'PermisoController@lista');
+/*$router->get('/permisos', 'PermisoController@lista');
 $router->post('/permisos', 'PermisoController@insertar');
 $router->get('/permisos/{id}', 'PermisoController@editar');
 $router->put('/permisos/{id}', 'PermisoController@actualizar');
 $router->delete('/permisos/{id}', 'PermisoController@eliminar');
-$router->put('/permisos/{id}/estado', 'PermisoController@editarEstado');
+$router->put('/permisos/{id}/estado', 'PermisoController@editarEstado');*/
+$router->group(['middleware' => 'auth'], function () use ($router) {
+    $router->get('/permisos', 'PermisoController@lista');
+    $router->post('/permisos', 'PermisoController@insertar');
+    $router->get('/permisos/{id}', 'PermisoController@editar');
+    $router->put('/permisos/{id}', 'PermisoController@actualizar');
+    $router->delete('/permisos/{id}', 'PermisoController@eliminar');
+    $router->put('/permisos/{id}/estado', 'PermisoController@editarEstado');
+});
 
 $router->get('/tipos_permisos', 'TipoPermisoController@lista');
 $router->post('/tipos_permisos', 'TipoPermisoController@insertar');
@@ -68,3 +76,6 @@ $router->get('/colaborador_horario/{id}', 'ColaboradorHorarioController@editar')
 $router->put('/colaborador_horario/{id}', 'ColaboradorHorarioController@actualizar');
 $router->delete('/colaborador_horario/{id}', 'ColaboradorHorarioController@eliminar');
 $router->put('/colaborador_horario/{id}/estado', 'ColaboradorHorarioController@editarEstado');
+
+$router->post('/login', 'AuthController@login');
+$router->get('/me', ['middleware' => 'auth', 'uses' => 'AuthController@me']);
