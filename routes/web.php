@@ -79,3 +79,7 @@ $router->put('/colaborador_horario/{id}/estado', 'ColaboradorHorarioController@e
 
 $router->post('/login', 'AuthController@login');
 $router->get('/me', ['middleware' => 'auth', 'uses' => 'AuthController@me']);
+
+$router->post('/reportes/colaborador', 'ReporteController@asistencia');
+$router->post('/reportes/dia', 'ReporteController@asistencia_dia');
+$router->post('/reportes/dias', 'ReporteController@asistencia_dias');
