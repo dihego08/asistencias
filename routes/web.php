@@ -83,3 +83,5 @@ $router->get('/me', ['middleware' => 'auth', 'uses' => 'AuthController@me']);
 $router->post('/reportes/colaborador', 'ReporteController@asistencia');
 $router->post('/reportes/dia', 'ReporteController@asistencia_dia');
 $router->post('/reportes/dias', 'ReporteController@asistencia_dias');
+
+$router->post('/marcaciones/batch', 'MarcacionController@insertarBatch');
