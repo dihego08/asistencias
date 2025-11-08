@@ -45,18 +45,18 @@ class ReporteController extends Controller
     }
     public function asistencia_dias(Request $request)
     {
-        $fechaInicio = $request->input('fecha_inicio');
-        $fechaFin = $request->input('fecha_fin');
+        $mes = $request->input('mes');
+        $anio = $request->input('anio');
 
         // Validaciones básicas
-        if (!$fechaInicio || !$fechaFin) {
+        if (!$mes || !$anio) {
             return response()->json(['error' => 'Parámetros faltantes'], 400);
         }
 
         // Ejecutar el procedimiento almacenado
-        $reporte = DB::select("CALL sp_reporte_asistencia_dias(?, ?)", [
-            $fechaInicio,
-            $fechaFin
+        $reporte = DB::select("CALL sp_reporte_asistencia_complex(?, ?)", [
+            $mes,
+            $anio
         ]);
 
         return response()->json($reporte);
