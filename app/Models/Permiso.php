@@ -10,7 +10,7 @@ class Permiso extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
-        'id_colaborador', 'fecha_inicio', 'fecha_fin', 'motivo', 'id_tipo', 'estado', 'id_usuario_creacion', 'fecha_creacion', 'id_usuario_modificacion', 'fecha_modificacion'
+        'id_colaborador', 'fecha_inicio', 'fecha_fin', 'motivo', 'id_tipo', 'estado', 'id_usuario_creacion', 'fecha_creacion', 'id_usuario_modificacion', 'fecha_modificacion', 'hora_inicio', 'hora_fin'
     ];
     public function colaborador()
     {

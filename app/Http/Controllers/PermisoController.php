@@ -16,9 +16,7 @@ class PermisoController extends BaseController
     }
     public function lista()
     {
-        //return response()->json(Permiso::all());
         return response()->json(Permiso::with(array('colaborador', 'tipo'))->get());
-
     }
 
     public function insertar(Request $request)
@@ -29,6 +27,8 @@ class PermisoController extends BaseController
             'fecha_fin' => $request->input('fecha_fin'),
             'motivo' => $request->input('motivo'),
             'id_tipo' => $request->input('id_tipo'),
+            'hora_inicio' => $request->input('hora_inicio'),
+            'hora_fin' => $request->input('hora_fin'),
             'estado' => $request->input('estado'),
             'id_usuario_creacion' => $request->input('id_usuario_creacion'),
             'fecha_creacion' => Carbon::now(),
@@ -90,6 +90,8 @@ class PermisoController extends BaseController
                 'fecha_fin' => $request->input('fecha_fin'),
                 'motivo' => $request->input('motivo'),
                 'id_tipo' => $request->input('id_tipo'),
+                'hora_inicio' => $request->input('hora_inicio'),
+                'hora_fin' => $request->input('hora_fin'),
                 'estado' => $request->input('estado'),
                 'id_usuario_modificacion' => $request->input('id_usuario_modificacion'),
                 'fecha_modificacion' => Carbon::now(),
